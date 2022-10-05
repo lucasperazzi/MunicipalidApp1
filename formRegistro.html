@@ -27,6 +27,19 @@
       >
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
+            >Ingrese su DNI</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputDni"
+            aria-describedby="number"
+            name="dni"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
             >Ingrese su correo electrónico</label
           >
           <input
@@ -40,7 +53,7 @@
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label"
-            >Elija su password</label
+            >Elija su contraseña</label
           >
           <input
             type="password"
@@ -52,7 +65,7 @@
 
         <div class="mb-3">
           <label for="exampleInputPassword2" class="form-label"
-            >Repita su password</label
+            >Repita su contraseña</label
           >
           <input
             type="password"
@@ -66,26 +79,7 @@
       </form>
     </div>
 
-    <script type="module">
-        import {cargarNuevoUsuario} from "./fire.js"
-
-        let form = document.getElementById("register-form")
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault()
-            let passOk;
-            let emailUsuario = e.target.email.value;
-            if (e.target.password.value == e.target.password2.value){
-                passOk = e.target.password.value
-            }else{
-                alert("las contraseñas no son iguales")
-                return
-            }
-            cargarNuevoUsuario(emailUsuario,passOk).then(()=>{
-                window.location.href = "./index.html";
-            })
-        })
-    </script>
+    <script src="formRegistro.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
