@@ -34,6 +34,9 @@ btnObtenerUbicacion.addEventListener("click", () => {
 try {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (latitud === undefined || longitud === undefined) {
+      latitud = longitud = null;
+    }
     let tituloReclamo = e.target.tituloReclamo.value;
     let categoriaReclamo = categoriasReclamo.value;
     let imagenReclamo;
@@ -48,9 +51,13 @@ try {
         imagenReclamo,
         latitud + " - " + longitud
       ).then((response) => {
-        sessionStorage.setItem("ultimoReclamo", response.claimId);
-        alert("El reclamo fue creado correctamente");
-        window.location.href = "./verReclamos.html";
+        if (response.claimId === undefined) {
+          alert("Ocurrio un error");
+        } else {
+          alert("El reclamo fue creado correctamente");
+          sessionStorage.setItem("ultimoReclamo", response.claimId);
+          window.location.href = "./verReclamos.html";
+        }
       });
     });
   });
